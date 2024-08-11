@@ -1,19 +1,19 @@
-import {Breakfast} from '../../types/Recipe'
+// import {Breakfast} from '../../types/Recipe'
 
-type BreakfastCardProps = {
-    recipe: Breakfast;
-  };
+// type BreakfastCardProps = {
+//     recipe: Breakfast;
+//   };
 
-function BreakfastElem(props: BreakfastCardProps) {
-    const {recipe} = props;
+// function BreakfastElem(props: BreakfastCardProps) {
+//     const {recipe} = props;
     
-    return (
-        <div>
-            <article>{recipe.Title}</article>
-            <article>{recipe.Time}</article>
-            <article>{recipe.Recipe}</article>
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <article>{recipe.Title}</article>
+//             <article>{recipe.Time}</article>
+//             <article>{recipe.Recipe}</article>
+//         </div>
+//     )
+// }
 
-export default BreakfastElem
+// export default BreakfastElem

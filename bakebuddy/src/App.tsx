@@ -4,32 +4,38 @@ import RecipeForm from './components/RecipeForm/RecipeForm';
 import { Recipe } from './types/Recipe';
 import Sidebar from './components/Sidebar/Sidebar';
 import { useState } from 'react';
+import Breakfast from './components/Breakfast/Breakfast';
+import Baking from './components/Baking/Baking';
+import Lunch from './components/Lunch/Lunch';
+import Dinner from './components/Dinner/Dinner';
 
 function App() {
+    const [breakfastRecipes, setBreakfastRecipes] = useState<Recipe[]>([]);
+    const [bakingRecipes, setBakingRecipes] = useState<Recipe[]>([]);
+    const [lunchRecipes, setLunchRecipes] = useState<Recipe[]>([]);
+    const [dinnerRecipes, setDinnerRecipes] = useState<Recipe[]>([]);
 
-  const handleSave = (recipe: Recipe) => {
+  const handleSave = (recipes: Recipe) => {
+    switch (recipes.type) {
+      case 'Breakfast':
+          setBreakfastRecipes([...breakfastRecipes, recipes]);
+          break;
+      case 'Baking':
+          setBakingRecipes([...bakingRecipes, recipes]);
+          break;
+      case 'Lunch':
+          setLunchRecipes([...lunchRecipes, recipes]);
+          break;
+      case 'Dinner':
+          setDinnerRecipes([...dinnerRecipes, recipes]);
+          break;
+      default:
+          console.log('Unknown recipe type');
+  }
     // Here you would typically save the recipe to local storage or update the state
-    console.log('Recipe saved:', recipe);
+    console.log('Recipe saved:', recipes);
 };
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
-  // const navigate = useNavigate();
-  // const goToBaking = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  //   event.preventDefault(); // Prevent the default anchor behavior
-  //   navigate("/baking");
-  // };
-  // const goToBreakfast = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  //   event.preventDefault(); // Prevent the default anchor behavior
-  //   navigate("/breakfast");
-  // };
-  // const goToLunch = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  //   event.preventDefault(); // Prevent the default anchor behavior
-  //   navigate("/lunch");
-  // };
-  // const goToDinner = (event: React.MouseEvent<HTMLAnchorElement>) => {
-  //   event.preventDefault(); // Prevent the default anchor behavior
-  //   navigate("/dinner");
-  // };
 
   return (
     <> 
@@ -37,15 +43,14 @@ function App() {
         <h1>Bake Buddy</h1>
         <button onClick={() => setIsSidebarOpen(true)}>Open Sidebar</button>
         <Sidebar
-        opened={isSidebarOpen}
-        onClickClose={() => setIsSidebarOpen(false)} />
+          opened={isSidebarOpen}
+          onClickClose={() => setIsSidebarOpen(false)} 
+        />
         <RecipeForm onSave={handleSave} />
-        {/* <aside>
-          <a href="Baking" onClick={goToBaking}>Baking</a>
-          <a href="Breakfast" onClick={goToBreakfast}>Breakfast</a>
-          <a href="Lunch" onClick={goToLunch}>Lunch</a>
-          <a href="Dinner" onClick={goToDinner}>Dinner</a>
-        </aside> */}
+        <Breakfast recipes={breakfastRecipes} />
+        <Baking recipes={bakingRecipes} />
+        <Lunch recipes={lunchRecipes} />
+        <Dinner recipes={dinnerRecipes} />
       </main>
     </>
   )

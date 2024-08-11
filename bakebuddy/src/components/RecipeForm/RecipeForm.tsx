@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {Recipe, RecipeType} from '../../types/Recipe'
+import { useNavigate } from "react-router-dom";
+import './RecipeForm.scss'
 
 type RecipeFormProps = {
     onSave: (recipe: Recipe) => void;
 }
-
 const RecipeForm: React.FC<RecipeFormProps> = ({ onSave }) => {
     const [title, setTitle] = useState('');
     const [time, setTime] = useState<number>(0);
@@ -29,6 +30,10 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSave }) => {
         resetForm();
 };
 
+const [form, setForm] = useState({})
+const navigate = useNavigate();
+
+
 const resetForm = () => {
     setTitle('');
     setTime(0);
@@ -38,7 +43,7 @@ const resetForm = () => {
 };
 
 return (
-    <div>
+    <div className='form-container'>
         <h2>Add New Recipe</h2>
         <input 
         type="text"
@@ -51,7 +56,7 @@ return (
         placeholder='Time'
         value={time}
         onChange={(e) => setTime(parseInt(e.target.value))}
-        />
+        /> 
         <select value={type} onChange={(e) => setType(e.target.value as RecipeType)}>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
@@ -71,6 +76,7 @@ return (
                         setIngredients(newIngredients)
                     }}
                  />
+                 
             ))}
             <button type="button" onClick={addIngredientField}>
                     Add Ingredient

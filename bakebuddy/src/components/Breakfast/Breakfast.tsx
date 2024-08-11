@@ -1,21 +1,27 @@
-// import BreakfastElem from "./BreakfastElem"
+import React from 'react';
+import { Recipe } from '../../types/Recipe';
 
-// type DisplayBreakfastProps = {
-//     recipes: Breakfast[];
-// }
+type BreakfastProps = {
+    recipes: Recipe[]; // Ensure this matches the type of data being passed
+};
 
-function Breakfast(props: DisplayBreakfastProps) {
+const Breakfast: React.FC<BreakfastProps> = ({ recipes }) => {
+    console.log('Received recipes:', recipes);
 
-    // const {recipes} = props;
-
-    // const recipeComponents = recipes.map((recipe) => {
-    //     return <BreakfastElem recipe={recipe} />;
-    // });
+    if (!recipes) {
+        return <div>No recipes available.</div>;
+    }
 
     return (
-        <section> {recipeComponents} </section>
-    )
+        <div>
+            <h2>Breakfast Recipes</h2>
+            <ul>
+                {recipes.map((recipe) => (
+                    <li key={recipe.id}>{recipe.Title}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
-}
-
-export default Breakfast
+export default Breakfast;
