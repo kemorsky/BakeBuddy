@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    color: white;
+    width: 20rem;
+    height: 60rem;
+
+    .sidebar-head {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 11rem;
+
+        h2 {
+            color: black;
+            font-size: 1.4rem;
+        }
+    }
+
+    .nav-item-1, .nav-item-2, .nav-item-3, .nav-item-4, a {
+        display: flex;
+        align-items: flex-start;
+        width: 15rem;
+        padding: 0.15rem;
+    }
+
+    a {
+        max-width: 6rem;
+        font-size: 1.2rem;
+        color: white;
+    }
+}
+
+.sidebar ul li a:hover {
+    background-color: blue;
+    border-radius: 8px;
+    padding: 0.3rem;
+}
