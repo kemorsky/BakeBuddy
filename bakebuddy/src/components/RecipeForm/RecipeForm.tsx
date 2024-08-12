@@ -6,7 +6,7 @@ import './RecipeForm.scss'
 type RecipeFormProps = {
     onSave: (recipe: Recipe) => void;
 }
-const RecipeForm: React.FC<RecipeFormProps> = ({ onSave }) => {
+function RecipeForm({ onSave }: RecipeFormProps) {
     const [title, setTitle] = useState('');
     const [time, setTime] = useState<number>(0);
     const [ingredients, setIngredients] = useState<string[]>(['']);

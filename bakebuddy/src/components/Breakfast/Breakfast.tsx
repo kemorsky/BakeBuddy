@@ -5,7 +5,7 @@ type BreakfastProps = {
     recipes: Recipe[]; // Ensure this matches the type of data being passed
 };
 
-const Breakfast: React.FC<BreakfastProps> = ({ recipes }) => {
+function Breakfast({recipes}: BreakfastProps){
     console.log('Received recipes:', recipes);
 
     if (!recipes) {
@@ -15,9 +15,10 @@ const Breakfast: React.FC<BreakfastProps> = ({ recipes }) => {
     return (
         <div>
             <h2>Breakfast Recipes</h2>
-            <ul>
+            <ul> 
+                <Breakfast/>
                 {recipes.map((recipe) => (
-                    <li key={recipe.id}>{recipe.Title}</li>
+                    <li key={recipe.id}>{recipe.Title} {recipe.time}</li>
                 ))}
             </ul>
         </div>
