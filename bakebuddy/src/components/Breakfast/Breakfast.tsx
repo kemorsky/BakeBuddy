@@ -1,4 +1,3 @@
-import React from 'react';
 import { Recipe } from '../../types/Recipe';
 
 type BreakfastProps = {
@@ -18,7 +17,7 @@ function Breakfast({recipes}: BreakfastProps){
             <ul> 
                 <Breakfast/>
                 {recipes.map((recipe) => (
-                    <li key={recipe.id}>{recipe.Title} {recipe.time}</li>
+                    <li key={recipe.id}> title={recipe.Title} time={recipe.time} ingredients={recipe.ingredients} steps={recipe.steps}</li>
                 ))}
             </ul>
         </div>
