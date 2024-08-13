@@ -9,10 +9,21 @@
     padding: 0px !important;
     display: flex;
     flex-direction: column;
-    background-color: yellow;
+    background-color: #343A40;
     color: white;
     width: 20rem;
     height: 60rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-78%);
+
+    .toggle_btn {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-self: flex-end;
+        margin: 0.7rem;
+    }
 
     .sidebar-head {
         padding: 1rem;
@@ -30,7 +41,7 @@
         display: flex;
         align-items: flex-start;
         width: 15rem;
-        padding: 0.15rem;
+        padding: 0.2rem;
     }
 
     a {
@@ -40,8 +51,17 @@
     }
 }
 
+.sidebar.open {
+    transform: translateX(0);
+  }
+
 .sidebar ul li a:hover {
     background-color: blue;
     border-radius: 8px;
     padding: 0.3rem;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: black;
 }

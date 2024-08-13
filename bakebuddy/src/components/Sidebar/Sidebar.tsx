@@ -1,13 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react";
 import './Sidebar.scss'
 
-function Sidebar({
-    opened,
-    onClickClose
-}: {
-    opened: boolean;
-    onClickClose: () => void
-}) {
+function Sidebar() {
+
+    const [isOpen, setIsOpen] = useState(false)
 
     const navigate = useNavigate();
     const goToBaking = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -27,9 +24,15 @@ function Sidebar({
         navigate("/dinner");
     };
 
+    function handleSideBarChange() {
+        setIsOpen((prevState) => !prevState)
+    }
 
     return (
-        <div className="sidebar" onClick={onClickClose}>
+        <div className={`sidebar ${isOpen ? 'open' : ''}`} >
+            <button className="toggle_btn" onClick={handleSideBarChange}>
+                Toggle Sidebar
+            </button>
             <section className="sidebar-head">
                 <h2>Recipes</h2>
             </section>

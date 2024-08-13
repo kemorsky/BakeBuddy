@@ -35,17 +35,12 @@ function App() {
     // Here you would typically save the recipe to local storage or update the state
     console.log('Recipe saved:', recipes);
 };
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <> 
       <main>
         <h1>Bake Buddy</h1>
-        <button onClick={() => setIsSidebarOpen(true)}>Open Sidebar</button>
-        <Sidebar
-          opened={isSidebarOpen}
-          onClickClose={() => setIsSidebarOpen(false)} 
-        />
+        <Sidebar/>
         <RecipeForm onSave={handleSave} />
         <Breakfast recipes={breakfastRecipes} />
         <Baking recipes={bakingRecipes} />
