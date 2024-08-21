@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Recipe, RecipeType} from '../../types/Recipe'
-import { useNavigate } from "react-router-dom";
 import './RecipeForm.scss'
 
 type RecipeFormProps = {
@@ -11,7 +10,7 @@ function RecipeForm({ onSave }: RecipeFormProps) {
     const [time, setTime] = useState<number>(0);
     const [ingredients, setIngredients] = useState<string[]>(['']);
     const [steps, setSteps] = useState<string[]>(['']);
-    const [type, setType] = useState<RecipeType>('Breakfast');
+    const [type, setType] = useState<RecipeType>('Dinner');
 
     const addIngredientField = () => setIngredients([...ingredients, '']);
     const addStepField = () => setSteps([...steps, '']);
@@ -29,10 +28,6 @@ function RecipeForm({ onSave }: RecipeFormProps) {
         onSave(newRecipe);
         resetForm();
 };
-
-const [form, setForm] = useState({})
-const navigate = useNavigate();
-
 
 const resetForm = () => {
     setTitle('');

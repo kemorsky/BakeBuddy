@@ -42,7 +42,7 @@ function App() {
         <h1>Bake Buddy</h1>
         <Sidebar/>
         <RecipeForm onSave={handleSave} />
-        {/* <Breakfast recipes={breakfastRecipes} /> */}
+        <Breakfast recipes={breakfastRecipes} />
         <Baking recipes={bakingRecipes} />
         <Lunch recipes={lunchRecipes} />
         <Dinner recipes={dinnerRecipes} />
