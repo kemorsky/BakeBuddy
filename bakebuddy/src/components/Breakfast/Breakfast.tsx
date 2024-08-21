@@ -15,9 +15,13 @@ function Breakfast({recipes}: BreakfastProps){
         <div>
             <h2>Breakfast Recipes</h2>
             <ul> 
-                <Breakfast/>
-                {recipes.map((recipe) => (
-                    <li key={recipe.id}> title={recipe.Title} time={recipe.time} ingredients={recipe.ingredients} steps={recipe.steps}</li>
+            {recipes?.map((recipe) => (
+                    <li key={recipe.id}>
+                        <h3>{recipe.Title}</h3>
+                        <p>Time: {recipe.time}</p>
+                        <p>Ingredients: {recipe.ingredients.join(', ')}</p>
+                        <p>Steps: {recipe.steps.join('; ')}</p>
+                    </li>
                 ))}
             </ul>
         </div>
